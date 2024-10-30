@@ -12,7 +12,7 @@ function addEmployee(event){
     let title = document.querySelector("#inputTitle").value;
     let salary = Number(document.querySelector("#inputSalary").value);
     // Update Table with data
-    document.querySelector('#employeeTable').innerHTML += '<tr><td>'+ firstName +'</td><td>'+ lastName +'</td><td>'+ id +'</td><td>'+ title +'</td><td>'+ salary.toLocaleString('en-US') +'</td><td><button onclick="deleteEmployee()">Delete</button></td></tr>';
+    document.querySelector('#employeeTable').innerHTML += '<tr id="employeeRow-'+ id+'"><td>'+ firstName +'</td><td>'+ lastName +'</td><td>'+ id +'</td><td>'+ title +'</td><td>'+ salary.toLocaleString('en-US') +'</td><td><button onclick="deleteEmployee('+ id +')">Delete</button></td></tr>';
     // Reset Form
     document.getElementById('employeeForm').reset();
     // Update Total
@@ -34,3 +34,7 @@ function updateMonthlyCost(amount){
     document.querySelector('#monthlyCostOutput').innerHTML = 'Total Monthly: ' + totalMonthlyCost.toLocaleString('en-US');
 }
 // Function to Delete Employee
+function deleteEmployee(id){
+    console.log('in deleteEmployee', id);
+    document.getElementById('employeeRow-' + id ).remove();
+}
